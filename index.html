@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Wahlroos OU - Management & Technical Consulting Excellence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #0a4d3c 0%, #087f5b 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #66d9e8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a4d3c 0%, #087f5b 50%, #0c8599 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #087f5b;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0a4d3c;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #087f5b;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #087f5b;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0a4d3c;
+        }
+
+        .service-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            background: linear-gradient(135deg, #e7f5ff 0%, #d0ebff 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #087f5b, #0c8599);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #0a4d3c;
+        }
+
+        .benefit-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Process Section */
+        .process {
+            background: #f8f9fa;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #087f5b, #0c8599);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 5px 15px rgba(8, 127, 91, 0.3);
+        }
+
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #0a4d3c;
+        }
+
+        .process-step p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Image Sections */
+        .image-content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .image-content-section.reverse {
+            direction: rtl;
+        }
+
+        .image-content-section.reverse > * {
+            direction: ltr;
+        }
+
+        .content-block h2 {
+            font-size: 2.2rem;
+            color: #0a4d3c;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-block p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .content-block ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .content-block ul li {
+            padding: 0.8rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .content-block ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #087f5b;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #0a4d3c 0%, #087f5b 50%, #0c8599 100%);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            background: linear-gradient(135deg, #0a4d3c 0%, #087f5b 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .contact-form-section .section-title,
+        .contact-form-section .section-subtitle {
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0a4d3c;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #087f5b;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #087f5b, #0c8599);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(8, 127, 91, 0.4);
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .contact-details {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-item-icon {
+            font-size: 2.5rem;
+            color: #087f5b;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            color: #0a4d3c;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .contact-item a {
+            color: #087f5b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #0c8599;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .image-content-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .image-content-section.reverse {
+                direction: ltr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .process-steps {
+                gap: 2rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Studio Wahlroos OU</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1 class="fade-in-up">Strategic Excellence in Management & Technical Consulting</h1>
+            <p class="fade-in-up">Empowering organizations across Estonia and beyond with innovative solutions, expert guidance, and transformative strategies that drive sustainable growth and operational excellence in today's dynamic business landscape</p>
+            <a href="#contact" class="cta-button">Start Your Transformation</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Pioneering Professional Excellence</h2>
+            <p class="section-subtitle">Your trusted partner in navigating complex business challenges</p>
+            <div class="about-content">
+                <p>Studio Wahlroos OU stands as a beacon of professional excellence in the Baltic region, specializing in comprehensive management, scientific, and technical consulting services. Founded and led by Principal Tomi Tapani Wahlroos, our firm has established itself as a trusted advisor to organizations seeking transformative solutions and strategic insights. We operate at the intersection of innovation and practicality, delivering services that are grounded in scientific rigor while remaining accessible and actionable for our clients.</p>
+                
+                <p>Our approach is built on three fundamental pillars: deep industry expertise, client-centered collaboration, and measurable results. We believe that every organization has unique challenges and opportunities, which is why we invest time in understanding your specific context, culture, and objectives before proposing solutions. Based in Tallinn, Harjumaa, we serve clients throughout Estonia and internationally, bringing global best practices to local challenges.</p>
+                
+                <p>With years of collective experience across diverse industries, our team combines technical proficiency with strategic thinking. We don't just identify problems—we architect comprehensive solutions that create lasting value. Whether you're navigating digital transformation, optimizing operations, or developing new capabilities, Studio Wahlroos OU provides the expertise, tools, and partnership you need to succeed in an increasingly complex business environment. Our commitment to excellence and integrity has made us a preferred partner for forward-thinking organizations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Service Portfolio</h2>
+            <p class="section-subtitle">Tailored solutions designed to accelerate your success</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Strategic Management Consulting</h3>
+                    <p>We partner with leadership teams to develop and implement strategies that drive organizational performance. Our consulting services encompass strategic planning, organizational design, change management, and performance optimization. We help you navigate complexity, make informed decisions, and build capabilities that sustain competitive advantage in rapidly evolving markets.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Scientific & Research Advisory</h3>
+                    <p>Leveraging rigorous analytical methodologies, we provide scientific advisory services that transform data into actionable insights. Our team supports research initiatives, conducts feasibility studies, and delivers evidence-based recommendations across various domains. We bridge the gap between scientific knowledge and practical application, ensuring your decisions are grounded in solid evidence and validated approaches.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Technical Solutions & Implementation</h3>
+                    <p>From concept to execution, we deliver technical consulting services that optimize your operations and infrastructure. Our expertise spans technology assessment, systems integration, process engineering, and implementation support. We work alongside your teams to deploy solutions that enhance efficiency, reduce costs, and position your organization for scalable growth while ensuring seamless adoption and knowledge transfer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-choose">
+        <div class="container">
+            <h2 class="section-title">The Wahlroos Advantage</h2>
+            <p class="section-subtitle">What sets us apart in delivering exceptional value</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Results-Driven Methodology</h3>
+                    <p>We focus relentlessly on delivering measurable outcomes that matter to your organization. Our engagement model emphasizes clear objectives, transparent progress tracking, and accountability at every stage. We don't consider our work complete until you've achieved tangible improvements in performance, efficiency, or capability that justify your investment in our services.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Collaborative Partnership Approach</h3>
+                    <p>We believe the best solutions emerge from genuine collaboration between consultants and clients. Rather than prescribing generic solutions, we work alongside your teams to co-create strategies that leverage your organizational strengths and address your specific challenges. This partnership approach ensures knowledge transfer, builds internal capabilities, and creates lasting value beyond the engagement.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+                    <h3>Integrated Expertise & Innovation</h3>
+                    <p>Our multidisciplinary expertise allows us to address complex challenges that span management, scientific, and technical domains. We bring fresh perspectives informed by global best practices while remaining grounded in practical reality. This integrated approach, combined with our commitment to continuous learning and innovation, ensures you receive solutions that are both cutting-edge and implementable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Our Proven Engagement Process</h2>
+            <p class="section-subtitle">A structured approach that ensures successful outcomes</p>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Discovery & Assessment</h3>
+                    <p>We begin every engagement with comprehensive discovery to understand your organization, challenges, and objectives. Through stakeholder interviews, data analysis, and environmental assessment, we develop a deep understanding of your context. This foundation enables us to design solutions that are precisely aligned with your needs and organizational culture.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Strategy & Solution Design</h3>
+                    <p>Based on our discovery findings, we collaborate with your team to develop customized strategies and solutions. We present clear recommendations, evaluate alternatives, and refine approaches based on your feedback. This phase includes detailed planning, resource allocation, risk assessment, and establishment of success metrics to guide implementation.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Implementation & Optimization</h3>
+                    <p>We support you throughout implementation, providing hands-on guidance, troubleshooting challenges, and ensuring successful adoption. Our involvement continues as we monitor progress, measure results against objectives, and make adjustments to optimize outcomes. We ensure knowledge transfer and build your internal capabilities for sustained success beyond our engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="image-content-section">
+                <div class="image-placeholder">
+                    Professional Excellence
+                </div>
+                <div class="content-block">
+                    <h2>Our Mission & Vision</h2>
+                    <p>At Studio Wahlroos OU, we are driven by a clear mission: to empower organizations with the knowledge, strategies, and capabilities they need to thrive in an increasingly complex and competitive world. We envision a future where businesses across Estonia and beyond can access world-class consulting expertise that transforms challenges into opportunities for growth.</p>
+                    <p>Our vision extends beyond traditional consulting. We aim to be catalysts for positive change, helping organizations not only solve immediate problems but also build resilient systems and capabilities that enable continuous improvement and innovation. We measure our success by the lasting impact we create in the organizations we serve.</p>
+                    <p>We are committed to maintaining the highest standards of professional integrity, staying at the forefront of industry developments, and fostering long-term relationships built on trust and mutual success. This commitment guides every engagement and every interaction with our clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tailored Solutions Section -->
+    <section class="tailored-solutions">
+        <div class="container">
+            <div class="image-content-section reverse">
+                <div class="content-block">
+                    <h2>Customized Solutions for Your Unique Challenges</h2>
+                    <p>We recognize that no two organizations face identical challenges. That's why we've developed a flexible, modular approach to service delivery that can be tailored to your specific needs, industry context, and organizational maturity. Whether you require comprehensive transformation support or targeted expertise for specific initiatives, we adapt our methods to serve you best.</p>
+                    <p>Our solutions are designed to integrate seamlessly with your existing operations and complement your internal capabilities. We work within your constraints—whether budgetary, temporal, or resource-related—to deliver maximum value. Our agile methodology allows us to respond quickly to changing circumstances and emerging opportunities throughout our engagement.</p>
+                    <ul>
+                        <li>Scalable engagement models from project-based to ongoing advisory relationships</li>
+                        <li>Industry-specific expertise across technology, manufacturing, services, and public sectors</li>
+                        <li>Flexible delivery options including on-site, remote, and hybrid consulting</li>
+                        <li>Integration with your existing teams, processes, and technology infrastructure</li>
+                    </ul>
+                </div>
+                <div class="image-placeholder">
+                    Innovation & Strategy
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-form-section">
+        <div class="container">
+            <h2 class="section-title">Let's Start a Conversation</h2>
+            <p class="section-subtitle">Share your challenges with us and discover how we can help you achieve your goals</p>
+            <form class="contact-form" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" name="company" placeholder="Your organization name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+372 XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label for="service">Area of Interest</label>
+                    <input type="text" id="service" name="service" placeholder="e.g., Strategic Consulting, Technical Solutions">
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell Us About Your Needs</label>
+                    <textarea id="message" name="message" required placeholder="Please describe your current challenges, objectives, or questions. The more details you provide, the better we can prepare for our conversation."></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Your Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <h3>Our Location</h3>
+                    <p>Tartu mnt 84a-105<br>Tallinn, Harjumaa<br>10112 Estonia</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:info@studiowahlroos.info">info@studiowahlroos.info</a></p>
+                    <p>We typically respond within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Studio Wahlroos OU. All rights reserved.</p>
+            <p>Registry Code: 16727127 | Principal: Tomi Tapani Wahlroos</p>
+            <p>Professional, Scientific, and Technical Consulting Services</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            const mailtoLink = `mailto:info@studiowahlroos.info?subject=Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
+                `Name: ${formData.name}\n` +
+                `Email: ${formData.email}\n` +
+                `Company: ${formData.company}\n` +
+                `Phone: ${formData.phone}\n` +
+                `Area of Interest: ${formData.service}\n\n` +
+                `Message:\n${formData.message}`
+            )}`;
+            
+            window.location.href = mailtoLink;
+            
+            alert('Thank you for your interest! Your default email client will open to send your inquiry. Alternatively, you can email us directly at info@studiowahlroos.info');
+            
+            return false;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
